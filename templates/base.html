@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <header class="flex justify-between p-7 bg-[#d6d6cb]">
+        <h1 class="font-bold text-[#28281f] ml-4 text-xl">Post-it !</h1>
+        <form action="search" method="get" class="">
+            <input type="text" name="q" placeholder="Chercer une annonce" class="rounded-lg px-2 py-1">
+            <button type="submit" class=""> 🔎</button>
+        </form>
+        {% if session["user"] %}
+        <h1 class="bg-slate-1">Bienvenue {{session["user"]}}</h1>
+        
+        {% endif %}
+        <nav>
+            <ul>
+                {% if session["user"] %}
+                <li><a href="/publish" class="text-[#FAEA3E] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">publier</a>  <a href="/logout" class="text-[#FA4B3E] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">se déconnéter</a> </li>
+                {% else %}
+                <li><a href="/login" class="text-[#FAEA3E] rounded-lg bg-[#28281f] font-bold mx-8 px-4 py-2">se connecter</a>  <a href="/register" class="text-[#3EDBFA] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">s'enregistré</a> </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <!--Contenu Context-->
+        {% endblock %}
+    </main>
+</body>
+</html>

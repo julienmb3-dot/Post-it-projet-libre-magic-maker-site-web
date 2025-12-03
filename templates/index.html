@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+        <br>
+        <section class="grid grid-rows-2 grid-cols-4 gap-10 p-5">
+            {% for annonces in annonces %}
+                {% if annonces["color"] == "red" %}
+                <div class="rounded-lg bg-[#FF9696] shadow-md">
+                    <article> 
+                        <p class="text-center text-[#29281E]">{{annonces["content"]}}</p>
+                        <p class="text-center text-[#434232]">{{annonces["date"]}}</p>
+                        <p class="italic text-slate-400 text-left p-3">{{annonces["auteur"]}}</p>
+                    </article>
+                </div>    
+                {% endif %}
+                {% if annonces["color"] == "yellow" %}
+                <div class="rounded-lg bg-[#FFFA96] shadow-md">
+                    <article> 
+                        <p class="text-center text-[#29281E]">{{annonces["content"]}}</p>
+                        <p class="text-center text-[#434232]">{{annonces["date"]}}</p>
+                        <p class="italic text-slate-400 text-left p-3">{{annonces["auteur"]}}</p>
+                    </article>
+                </div>    
+                {% endif %}
+                {% if annonces["color"] == "green" %}
+                <div class="rounded-lg bg-[#9EFFA4] shadow-md">
+                    <article> 
+                        <p class="text-center text-[#29281E]">{{annonces["content"]}}</p>
+                        <p class="text-center text-[#434232]">{{annonces["date"]}}</p>
+                        <p class="italic text-slate-400 text-left p-3">{{annonces["auteur"]}}</p>
+                    </article>
+                </div>    
+                {% endif %}
+                {% if annonces["color"] == "blue" %}
+                <div class="rounded-lg bg-[#A6BFFF] shadow-md">
+                    <article> 
+                        <p class="text-center text-[#29281E]">{{annonces["content"]}}</p>
+                        <p class="text-center text-[#434232]">{{annonces["date"]}}</p>
+                        <p class="italic text-slate-400 text-left p-3">{{annonces["auteur"]}}</p>
+                    </article>
+                </div>    
+                {% endif %}
+            {% endfor %}
+        </section>
+{% endblock %}

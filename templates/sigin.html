@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if erreur %}
+    <p class="font-bold text-[#BD2A0D] flex justify-center mt-3">Erreur : {{erreur}}</p>
+{% endif %}
+<div class="flex items-center justify-center mt-10">
+    <form method = "POST" action = "{{url_for('sigin')}}">
+        <div>
+            <label>Utilisateur</label>
+            <input class="rounded-lg px-2 py-1" name="user_id" type="text" placeholder="Entrez ici votre identifiant">
+        </div>
+        <br>
+        <div>
+            <label>Mot de passe</label>
+            <input class="rounded-lg px-2 py-1" name="password" type="password" placeholder="Entrez ici votre mot de passe" >
+        </div>
+        <div>
+            <label>Confirmation</label>
+            <input  class="rounded-lg px-2 py-1" name="password_validation" type="password" placeholder="confirmation">
+        </div>
+
+        <br>
+        <div>
+            <button class="rounded-lg px-2 py-1" type="submit">Se connecter</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

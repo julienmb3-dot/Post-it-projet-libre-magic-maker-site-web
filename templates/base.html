@@ -21,9 +21,9 @@
         <nav>
             <ul>
                 {% if session["user"] %}
-                <li><a href="/publish" class="text-[#FAEA3E] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">publier</a>  <a href="/logout" class="text-[#FA4B3E] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">se déconnéter</a> </li>
+                <li><a href="/publish" class="text-[#FAEA3E] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">publier</a>  <a href="/logout" class="text-[#FA4B3E] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">se déconnécter</a> </li>
                 {% else %}
-                <li><a href="/login" class="text-[#FAEA3E] rounded-lg bg-[#28281f] font-bold mx-8 px-4 py-2">se connecter</a>  <a href="/register" class="text-[#3EDBFA] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">s'enregistré</a> </li>
+                <li><a href="/login" class="text-[#FAEA3E] rounded-lg bg-[#28281f] font-bold mx-8 px-4 py-2">se connecter</a>  <a href="/sigin" class="text-[#3EDBFA] px-4 py-2 rounded-lg bg-[#28281f] font-bold mx-8">s'enregistré</a> </li>
                 {% endif %}
             </ul>
         </nav>

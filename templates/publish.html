@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if erreur %}
+    <p class="font-bold text-[#BD2A0D] flex justify-center mt-3">Erreur : {{erreur}}</p>
+{% endif %}
+<div class="flex items-center justify-center mt-10">
+    <form method = "POST" action = "{{url_for('publish')}}">
+        <div class="flex items-center justify-center mt-10">
+            <label>Contenu</label>
+            <input class="rounded-lg px-2 py-1" name="content" type="text" placeholder="Entrez du texte">
+        </div>
+        <label class="mt-4 font-bold">COLOR</label>
+        <div class="flex items-center justify-center mt-2">
+            <label class="switch rounded-lg">
+                <input class="accent-yellow-500 w-5 h-5" name="yellow" type="checkbox" checked>
+            </label>
+            <label class="switch rounded-lg">
+                <input class="accent-red-600 w-5 h-5" name="red" type="checkbox">
+            </label>
+            <label class="switch rounded-lg">
+                <input class="w-5 h-5" name="blue" type="checkbox">
+            </label>
+            <label class="switch rounded-lg">
+                <input class="accent-emerald-500 w-5 h-5" name="green" type="checkbox">
+            </label>
+        </div>
+
+        <div>
+            <button class="rounded-lg px-2 py-1" type="submit">publier</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -16,6 +16,24 @@ def index():
     data = list(db["PostIt"].find())
     return render_template("index.html", annonces=data)
 
+@app.route("/search", methods = ["GET"])
+def search():
+    query = request.args.get("q" , "").strip()
+
+    if query == "":
+        results = list(db["PostIt"].find({}))
+        return render_template("search_result.html", annonces = results, query = query)
+    else:
+        results = list(db["PostIt"].find({
+            "$or": [
+                {"date": {"$regex" : query, "$options" : "i"}},
+                {"content": {"$regex" : query, "$options" : "i"}},
+                {"auteur": {"$regex" : query, "$options" : "i"}},
+                {"color": {"$regex" : query, "$options" : "i"}}
+            ]
+        }))
+        return render_template("search_result.html", annonces = results, query = query)
+    
 @app.route("/login", methods = ["POST", "GET"])
 def login():
     if request.method == "POST":
@@ -67,13 +85,13 @@ def publish():
         date = datetime.datetime.now()
         date = date.strftime("%x")
         
-        if request.form.get("yellow"):
+        if request.form["color"] == "yellow":
             color = "yellow"
-        elif request.form.get("red"):
+        elif request.form["color"] == "red":
             color = "red"
-        elif request.form.get("blue"):
+        elif request.form["color"] == "blue":
             color = "blue"
-        elif request.form.get("green"):
+        elif request.form["color"] == "green":
             color = "green"
         else:
             color = "yellow"

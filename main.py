@@ -59,14 +59,25 @@ def sigin():
 def publish():
     if "user" not in session:
         return redirect(url_for("login.html"))
-    
+
     if request.method == "POST":
         db_postIt = db["PostIt"]
         content = request.form["content"]
         auteur = session["user"]
         date = datetime.datetime.now()
         date = date.strftime("%x")
-        color = "yellow"
+        
+        if request.form.get("yellow"):
+            color = "yellow"
+        elif request.form.get("red"):
+            color = "red"
+        elif request.form.get("blue"):
+            color = "blue"
+        elif request.form.get("green"):
+            color = "green"
+        else:
+            color = "yellow"
+        
         if content:
             db_postIt.insert_one({
                 "content" : content,
